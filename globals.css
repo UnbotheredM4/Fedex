@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { @apply bg-white text-brand-ink; }
+.container { @apply max-w-6xl mx-auto px-4; }
+.card { @apply bg-white border border-gray-200 rounded-xl shadow-sm; }
+.btn { @apply inline-flex items-center gap-2 rounded-md px-4 py-2 font-medium; }
+.btn-primary { @apply btn bg-brand-purple text-white hover:opacity-90; }
+.btn-ghost { @apply btn border border-gray-300 hover:bg-gray-50; }
+.input { @apply w-full rounded-md border border-gray-300 px-3 py-2; }
+.label { @apply text-sm font-semibold text-gray-700; }
+.hint { @apply text-xs text-gray-500; }
+nav a { @apply text-sm font-medium; }
+header a:hover { @apply underline; }

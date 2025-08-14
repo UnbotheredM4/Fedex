@@ -1,0 +1,56 @@
+generator client { provider = "prisma-client-js" }
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Address {
+  id      String  @id @default(cuid())
+  name    String?
+  line1   String
+  line2   String?
+  city    String
+  state   String
+  postal  String
+  country String @default("US")
+  phone   String?
+  fromShipments Shipment[] @relation("fromAddress")
+  toShipments   Shipment[] @relation("toAddress")
+}
+
+model Shipment {
+  id             String   @id @default(cuid())
+  trackingNumber String   @unique
+  reference      String?
+  serviceLevel   String   // "GROUND" | "EXPRESS"
+  weightOz       Int
+  status         ShipmentStatus @default(PENDING)
+  editableUntil  DateTime?
+  fromAddressId  String
+  toAddressId    String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  fromAddress    Address  @relation("fromAddress", fields: [fromAddressId], references: [id])
+  toAddress      Address  @relation("toAddress", fields: [toAddressId], references: [id])
+  events         TrackingEvent[]
+}
+
+model TrackingEvent {
+  id          String   @id @default(cuid())
+  shipmentId  String
+  code        String
+  description String
+  location    String?
+  createdAt   DateTime @default(now())
+  shipment    Shipment @relation(fields: [shipmentId], references: [id])
+}
+
+enum ShipmentStatus {
+  PENDING
+  IN_TRANSIT
+  OUT_FOR_DELIVERY
+  DELIVERED
+  EXCEPTION
+  CANCELED
+}
