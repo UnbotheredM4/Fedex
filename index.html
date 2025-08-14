@@ -1,22 +1,44 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delivery Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <title>FastShip Express</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background-color: #fff; color: #333; }
+        header { background-color: #4D148C; padding: 15px; color: white; text-align: center; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        .hero { background: url('https://via.placeholder.com/1600x500/4D148C/FFFFFF?text=FastShip+Express') no-repeat center; background-size: cover; height: 400px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2em; }
+        .container { padding: 20px; max-width: 900px; margin: auto; }
+        .track-box { background: #f2f2f2; padding: 20px; border-radius: 8px; text-align: center; }
+        input[type="text"] { padding: 10px; width: 70%; }
+        button { padding: 10px 15px; background-color: #FF6600; color: white; border: none; cursor: pointer; }
+        footer { background-color: #4D148C; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Delivery Tracking System</h1>
+        <h1>FastShip Express</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="track.html">Track</a>
+            <a href="admin.html">Admin</a>
+        </nav>
     </header>
-    <main>
-        <form id="trackingForm">
-            <input type="text" id="trackingNumber" placeholder="Enter Tracking Number" required>
-            <button type="submit">Track</button>
-        </form>
-        <div id="result"></div>
-    </main>
-    <script src="script.js"></script>
+
+    <div class="hero">Fast. Reliable. Everywhere.</div>
+
+    <div class="container">
+        <div class="track-box">
+            <h2>Track Your Shipment</h2>
+            <input type="text" placeholder="Enter Tracking Number">
+            <button onclick="window.location.href='track.html'">Track</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 FastShip Express. All rights reserved.
+    </footer>
 </body>
 </html>
